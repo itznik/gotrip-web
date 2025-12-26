@@ -10,14 +10,14 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          dark: "#0B212F",   // Deep Teal (Header/Footer)
-          light: "#FDFBF7",  // Cream/Sand (Main BG)
-          accent: "#FF7E67", // Coral (Buttons)
-          secondary: "#1E3A4C", // Lighter Teal for gradients
+          dark: "#0B1120",   // Deepest Blue/Black (Main BG)
+          primary: "#0F172A", // Slate 900 (Secondary BG)
+          accent: "#FF6B6B", // Coral/Orange (Buttons)
+          text: "#E2E8F0",   // Light Gray (Text)
         }
       },
       backgroundImage: {
-        "hero-pattern": "url('/world-map.svg')", // We will add this later
+        "hero-glow": "conic-gradient(from 180deg at 50% 50%, #0F172A 0deg, #1e293b 180deg, #0F172A 360deg)",
       },
     },
   },
