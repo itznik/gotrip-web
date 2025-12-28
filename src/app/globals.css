@@ -1,18 +1,42 @@
 @import "tailwindcss";
 
-@layer base {
-  body {
-    @apply bg-brand-light text-slate-900 transition-colors duration-300;
-  }
-  .dark body {
-    @apply bg-brand-dark text-slate-100;
-  }
+:root {
+  /* Light Mode Colors */
+  --background: #FDFBF7;
+  --foreground: #0F172A;
+  --brand-accent: #FF6B6B;
 }
 
-/* Subtle Grid Pattern */
+.dark {
+  /* Dark Mode Colors */
+  --background: #0B1120;
+  --foreground: #F1F5F9;
+}
+
 body {
+  /* Standard CSS - This will never crash */
+  background-color: var(--background);
+  color: var(--foreground);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  
+  /* The Grid Pattern */
   background-image: 
     linear-gradient(to right, rgba(128, 128, 128, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(128, 128, 128, 0.05) 1px, transparent 1px);
   background-size: 40px 40px;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 9999px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background-color: #334155;
 }
