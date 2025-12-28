@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, Plane, Sun, Moon, User } from 'lucide-react';
+import { Menu, X, Plane, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from 'next-themes';
 
@@ -17,69 +17,55 @@ export default function Navbar() {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
-  // Avoid hydration mismatch
+  // Prevent hydration mismatch
   useEffect(() => setMounted(true), []);
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-brand-light/80 dark:bg-brand-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-white/10 transition-colors duration-300">
+    <nav className="fixed top-0 w-full z-50 bg-[var(--background)]/80 backdrop-blur-md border-b border-slate-200 dark:border-white/10 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
             <Plane className="h-8 w-8 text-brand-accent transform group-hover:-rotate-45 transition-transform duration-300" />
-            <span className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
-              GoTrip
-            </span>
+            <span className="text-2xl font-bold tracking-tight">GoTrip</span>
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-slate-600 dark:text-slate-300 hover:text-brand-accent dark:hover:text-brand-accent transition-colors text-sm font-medium"
-              >
+              <Link key={link.name} href={link.href} className="hover:text-brand-accent transition-colors text-sm font-medium opacity-80 hover:opacity-100">
                 {link.name}
               </Link>
             ))}
             
-            {/* Theme Toggle */}
+            {/* Theme Toggle Button */}
             {mounted && (
               <button
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="p-2 rounded-full bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-yellow-400 hover:bg-slate-200 dark:hover:bg-white/10 transition-all"
+                className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-all"
+                aria-label="Toggle Theme"
               >
-                {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                {theme === 'dark' ? <Sun size={20} className="text-yellow-400" /> : <Moon size={20} className="text-slate-600" />}
               </button>
             )}
 
-            {/* Auth Buttons */}
-            <div className="flex items-center gap-4 pl-4 border-l border-slate-200 dark:border-white/10">
-              <button className="text-slate-900 dark:text-white font-medium hover:text-brand-accent transition-colors">
-                Login
-              </button>
-              <button className="bg-brand-accent hover:bg-orange-600 text-white px-5 py-2.5 rounded-full font-medium transition-all shadow-lg shadow-brand-accent/20">
-                Register
-              </button>
-            </div>
+            <div className="h-6 w-px bg-slate-300 dark:bg-white/20 mx-2"></div>
+
+            <button className="font-medium hover:text-brand-accent transition-colors">Login</button>
+            <button className="bg-brand-accent hover:opacity-90 text-white px-5 py-2.5 rounded-full font-bold text-sm transition-all shadow-lg shadow-brand-accent/20">
+              Register
+            </button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Toggle */}
           <div className="md:hidden flex items-center gap-4">
              {mounted && (
-              <button
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="p-2 text-slate-700 dark:text-yellow-400"
-              >
-                {theme === 'dark' ? <Sun size={24} /> : <Moon size={24} />}
+              <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
+                {theme === 'dark' ? <Sun size={24} className="text-yellow-400" /> : <Moon size={24} className="text-slate-600" />}
               </button>
             )}
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-slate-900 dark:text-white hover:text-brand-accent transition-colors"
-            >
+            <button onClick={() => setIsOpen(!isOpen)} className="text-[var(--foreground)]">
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
@@ -93,26 +79,17 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-brand-light dark:bg-brand-dark border-b border-slate-200 dark:border-white/10 overflow-hidden"
+            className="md:hidden bg-[var(--background)] border-b border-slate-200 dark:border-white/10 overflow-hidden"
           >
             <div className="px-4 pt-2 pb-6 space-y-2">
               {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="block px-3 py-3 text-base font-medium text-slate-600 dark:text-slate-300 hover:text-brand-accent dark:hover:text-white hover:bg-slate-50 dark:hover:bg-white/5 rounded-md"
-                >
+                <Link key={link.name} href={link.href} onClick={() => setIsOpen(false)} className="block px-3 py-3 text-base font-medium hover:bg-black/5 dark:hover:bg-white/5 rounded-md">
                   {link.name}
                 </Link>
               ))}
-              <div className="pt-4 mt-4 border-t border-slate-200 dark:border-white/10 grid grid-cols-2 gap-4">
-                 <button className="w-full py-3 text-slate-900 dark:text-white font-bold border border-slate-200 dark:border-white/10 rounded-lg">
-                  Login
-                </button>
-                <button className="w-full bg-brand-accent text-white py-3 rounded-lg font-bold">
-                  Register
-                </button>
+              <div className="grid grid-cols-2 gap-4 mt-4 pt-4 border-t border-slate-200 dark:border-white/10">
+                <button className="py-3 border border-slate-300 dark:border-white/20 rounded-lg font-bold">Login</button>
+                <button className="py-3 bg-brand-accent text-white rounded-lg font-bold">Register</button>
               </div>
             </div>
           </motion.div>
