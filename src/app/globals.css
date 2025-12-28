@@ -4,18 +4,13 @@
 
 @layer base {
   :root {
-    /* Light Mode Variables */
     --background: #FDFBF7;
     --foreground: #0F172A;
-    --brand-accent: #FF6B6B;
   }
-
   .dark {
-    /* Dark Mode Variables */
     --background: #0B1120;
     --foreground: #F1F5F9;
   }
-
   body {
     background-color: var(--background);
     color: var(--foreground);
@@ -23,26 +18,15 @@
   }
 }
 
-/* Custom Scrollbar - PURE CSS (No @apply to prevent crashes) */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background-color: #cbd5e1; /* slate-300 */
-  border-radius: 9999px;
-}
-.dark ::-webkit-scrollbar-thumb {
-  background-color: #334155; /* slate-700 */
-}
-
-/* Marquee Animation Helper */
+/* Animations & Scrollbar */
 .animate-scroll {
-  animation: scroll 40s linear infinite;
+  animation: scroll 35s linear infinite;
 }
-/* Pause animation on hover */
 .pause-on-hover:hover .animate-scroll {
   animation-play-state: paused;
 }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 20px; }
+.dark ::-webkit-scrollbar-thumb { background-color: #334155; }
