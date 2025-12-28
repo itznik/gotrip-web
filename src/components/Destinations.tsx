@@ -33,7 +33,7 @@ const destinations = [
 
 export default function Destinations() {
   return (
-    <section id="destinations" className="py-24 bg-[#0B1120] relative">
+    <section id="destinations" className="py-12 md:py-20 bg-[#0B1120] relative">
       
       {/* Background Gradient Blob for depth */}
       <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-brand-accent/5 rounded-full blur-[120px] pointer-events-none" />
