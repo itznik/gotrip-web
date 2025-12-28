@@ -5,14 +5,15 @@
 @layer base {
   :root {
     /* Light Mode Variables */
-    --background: #FDFBF7; /* Creamy White */
-    --foreground: #0F172A; /* Dark Slate Text */
+    --background: #FDFBF7;
+    --foreground: #0F172A;
+    --brand-accent: #FF6B6B;
   }
 
   .dark {
     /* Dark Mode Variables */
-    --background: #0B1120; /* Deep Ocean */
-    --foreground: #F1F5F9; /* White Text */
+    --background: #0B1120;
+    --foreground: #F1F5F9;
   }
 
   body {
@@ -22,7 +23,7 @@
   }
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar - PURE CSS (No @apply to prevent crashes) */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -30,13 +31,18 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  @apply bg-slate-300 dark:bg-slate-700 rounded-full;
+  background-color: #cbd5e1; /* slate-300 */
+  border-radius: 9999px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background-color: #334155; /* slate-700 */
 }
 
-/* The Marquee Animation Helper */
+/* Marquee Animation Helper */
 .animate-scroll {
-  animation: scroll 30s linear infinite;
+  animation: scroll 40s linear infinite;
 }
+/* Pause animation on hover */
 .pause-on-hover:hover .animate-scroll {
   animation-play-state: paused;
 }
