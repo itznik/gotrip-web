@@ -123,7 +123,7 @@ export default function Navbar() {
                   Login
                 </Link>
                 <Link 
-                  href="app/register" 
+                  href="/register" 
                   onClick={() => setIsOpen(false)}
                   className="py-3 bg-brand-accent text-white rounded-lg font-bold text-center"
                 >
