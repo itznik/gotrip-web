@@ -2,31 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: #FDFBF7;
-    --foreground: #0F172A;
-  }
-  .dark {
-    --background: #0B1120;
-    --foreground: #F1F5F9;
-  }
-  body {
-    background-color: var(--background);
-    color: var(--foreground);
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
+/* 1. Define Variables Globally (Fixes Theme Toggle) */
+:root {
+  --background: #FDFBF7; /* Warm Cream */
+  --foreground: #0F172A; /* Dark Slate */
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  --brand-accent: #FF6B6B;
 }
 
-/* Animations & Scrollbar */
-.animate-scroll {
-  animation: scroll 35s linear infinite;
-}
-.pause-on-hover:hover .animate-scroll {
-  animation-play-state: paused;
+[class~="dark"] {
+  --background: #0B1120; /* Deep Ocean */
+  --foreground: #F1F5F9; /* White */
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(255, 255, 255, 0.1);
 }
 
+/* 2. Force No Horizontal Scroll (Fixes Mobile Layout Break) */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--background);
+  color: var(--foreground);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 3. Custom Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 20px; }
+::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 9999px; }
 .dark ::-webkit-scrollbar-thumb { background-color: #334155; }
+
+/* 4. Marquee Animation */
+.animate-scroll { animation: scroll 35s linear infinite; }
+.pause-on-hover:hover .animate-scroll { animation-play-state: paused; }
