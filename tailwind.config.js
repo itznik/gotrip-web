@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'class',
+  darkMode: ["class"], // This connects to next-themes
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,20 +9,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        background: "var(--background)",
+        foreground: "var(--foreground)",
         brand: {
-          // We map these to the CSS variables we defined above
-          dark: "var(--background)", 
-          light: "var(--background)",
+          dark: "#0B1120",
           accent: "#FF6B6B",
         }
       },
       animation: {
-        'marquee': 'marquee 25s linear infinite',
+        scroll: "scroll 40s linear infinite",
       },
       keyframes: {
-        marquee: {
-          '0%': { transform: 'translateX(0%)' },
-          '100%': { transform: 'translateX(-100%)' },
+        scroll: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(calc(-100% - 1rem))" }, // Moves half the width
         },
       },
     },
