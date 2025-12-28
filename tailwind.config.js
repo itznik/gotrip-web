@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: ["class"], // Works perfectly with next-themes
+  darkMode: ["class"], // This connects to next-themes
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -12,7 +12,7 @@ module.exports = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         brand: {
-          accent: "#FF6B6B",
+          accent: "var(--brand-accent)",
           dark: "#0B1120",
         }
       },
