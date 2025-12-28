@@ -1,17 +1,13 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
+import Destinations from '@/components/Destinations';
 
 export default function Home() {
   return (
-    // Changed bg-brand-light to bg-brand-dark
-    <main className="min-h-screen bg-brand-dark">
+    <main className="min-h-screen bg-[#0B1120]">
       <Navbar />
       <Hero />
-      
-      {/* Temporary spacing */}
-      <div className="h-[500px] flex items-center justify-center text-gray-400">
-        Next Section: Featured Destinations (Coming Soon)
-      </div>
+      <Destinations />
     </main>
   );
 }
