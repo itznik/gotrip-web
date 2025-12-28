@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'class', // Enables the toggle button
+  darkMode: 'class',
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -10,11 +10,10 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          dark: "#0B1120",    // Deep Ocean (Dark Mode BG)
-          light: "#FDFBF7",   // Warm Sand (Light Mode BG)
-          primary: "#0F172A", // Dark Slate
-          secondary: "#F1F5F9", // Light Slate
-          accent: "#FF6B6B",  // Coral
+          // We map these to the CSS variables we defined above
+          dark: "var(--background)", 
+          light: "var(--background)",
+          accent: "#FF6B6B",
         }
       },
       animation: {
