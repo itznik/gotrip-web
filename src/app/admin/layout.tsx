@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { LayoutDashboard, Plane, FileText, Users, LogOut } from 'lucide-react';
+import { LayoutDashboard, Plane, FileText, Users, LogOut, CalendarCheck } from 'lucide-react';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -13,9 +13,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </div>
         
         <nav className="flex-1 p-4 space-y-2">
-          <Link href="/admin" className="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/10 transition-all font-medium">
-            <LayoutDashboard size={20} /> Dashboard
-          </Link>
+  <Link href="/admin" className="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/10 transition-all font-medium">
+    <LayoutDashboard size={20} /> Dashboard
+  </Link>
+          <Link href="/admin/bookings" className="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/10 transition-all font-medium">
+    <CalendarCheck size={20} /> Bookings
+  </Link>
           <Link href="/admin/destinations" className="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/10 transition-all font-medium">
             <Plane size={20} /> Destinations
           </Link>
