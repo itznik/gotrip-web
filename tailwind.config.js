@@ -1,7 +1,6 @@
-import type { Config } from "tailwindcss";
-
-const config: Config = {
-  darkMode: ["class"],
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: ["class"], // Works perfectly with next-themes
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -13,21 +12,20 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         brand: {
-          dark: "#0B1120",
           accent: "#FF6B6B",
+          dark: "#0B1120",
         }
       },
       animation: {
-        scroll: "scroll 40s linear infinite",
+        scroll: "scroll 35s linear infinite",
       },
       keyframes: {
         scroll: {
           "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(calc(-100% - 1rem))" },
+          "100%": { transform: "translateX(calc(-100% - 1.5rem))" },
         },
       },
     },
   },
   plugins: [],
 };
-export default config;
