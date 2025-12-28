@@ -7,7 +7,11 @@ import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#0B1120]">
+    // EXPLICIT STYLING:
+    // 1. bg-[#FDFBF7]: Forces Cream color in Light Mode
+    // 2. dark:bg-[#0B1120]: Forces Deep Ocean in Dark Mode
+    // 3. overflow-x-hidden: Kills the mobile white bar issue
+    <main className="min-h-screen w-full bg-[#FDFBF7] dark:bg-[#0B1120] transition-colors duration-300 overflow-x-hidden">
       <Navbar />
       <Hero />
       <Destinations />
