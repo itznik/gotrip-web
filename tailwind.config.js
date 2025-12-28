@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: ["class"], // This connects to next-themes
+  darkMode: ["class"],
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,11 +9,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        // We define these explicitly to avoid variable confusion
         brand: {
-          accent: "var(--brand-accent)",
-          dark: "#0B1120",
+          accent: "#FF6B6B", // Coral
+          dark: "#0B1120",   // Deep Ocean
+          light: "#FDFBF7",  // Cream
         }
       },
       animation: {
