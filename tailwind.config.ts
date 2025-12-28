@@ -1,6 +1,7 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  darkMode: ["class"], // This connects to next-themes
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  darkMode: ["class"],
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -22,10 +23,11 @@ module.exports = {
       keyframes: {
         scroll: {
           "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(calc(-100% - 1rem))" }, // Moves half the width
+          "100%": { transform: "translateX(calc(-100% - 1rem))" },
         },
       },
     },
   },
   plugins: [],
 };
+export default config;
