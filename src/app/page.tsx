@@ -1,6 +1,8 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Destinations from '@/components/Destinations';
+import Blogs from '@/components/Blogs';
+import Testimonials from '@/components/Testimonials';
 
 export default function Home() {
   return (
@@ -8,6 +10,8 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Destinations />
+      <Blogs />
+      <Testimonials />
     </main>
   );
 }
