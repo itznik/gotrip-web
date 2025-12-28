@@ -2,47 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    /* LIGHT MODE (Default) */
-    --background: #FDFBF7;   /* Creamy White */
-    --foreground: #0F172A;   /* Dark Blue Text */
-    --card-bg: #FFFFFF;      /* White Cards */
-    --card-border: #E2E8F0;  /* Light Grey Border */
-    --brand-accent: #FF6B6B; /* Coral */
-  }
-
-  .dark {
-    /* DARK MODE (Override) */
-    --background: #0B1120;   /* Deep Ocean */
-    --foreground: #F1F5F9;   /* White Text */
-    --card-bg: rgba(255, 255, 255, 0.05);
-    --card-border: rgba(255, 255, 255, 0.1);
-  }
-
-  html {
-    overflow-x: hidden; /* STOP MOBILE SCROLL */
-  }
-
-  body {
-    background-color: var(--background);
-    color: var(--foreground);
-    overflow-x: hidden; /* DOUBLE STOP */
-    width: 100%;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden; /* Fixes the white bar on mobile */
 }
 
-/* Helper to ensure text colors switch */
-.text-adaptive {
-  color: var(--foreground);
+/* Hard reset for the body background to prevent transparency issues */
+body {
+  @apply bg-[#FDFBF7] text-slate-900; /* Default Light Mode */
 }
 
-/* Scrollbar Polish */
+/* Explicit Dark Mode Override */
+.dark body {
+  @apply bg-[#0B1120] text-slate-100;
+}
+
+/* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 9999px; }
-.dark ::-webkit-scrollbar-thumb { background-color: #334155; }
+::-webkit-scrollbar-thumb { @apply bg-slate-300 dark:bg-slate-700 rounded-full; }
 
 /* Marquee Animation */
 .animate-scroll { animation: scroll 35s linear infinite; }
