@@ -4,6 +4,7 @@ import Visitor from '@/models/Visitor';
 import User from '@/models/User';
 import Destination from '@/models/Destination';
 import Blog from '@/models/Blog';
+import Booking from '@/models/Booking';
 
 export async function GET() {
   await connectDB();
@@ -36,11 +37,14 @@ export async function GET() {
     visitors: v.count
   }));
 
+  const totalBookings = await Booking.countDocuments();
+
   return NextResponse.json({
     totalVisitors,
     totalUsers,
     totalDestinations,
     totalBlogs,
+    totalBookings,
     chartData
   });
 }
