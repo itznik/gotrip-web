@@ -53,6 +53,11 @@ export default function AdminDashboard() {
           value={stats?.totalBlogs || 0} 
           icon={<FileText size={24} className="text-purple-500" />} 
         />
+        <StatCard 
+  title="Active Bookings" 
+  value={stats?.totalBookings || 0}  // <--- Updated
+  icon={<Map size={24} className="text-green-500" />} 
+/>
       </div>
 
       {/* 2. ANALYTICS CHART */}
